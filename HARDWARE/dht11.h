@@ -15,13 +15,11 @@
 // #define DHT_PORT_ODR
 
 // DHT11 相关
-//extern int32_t DHT11_STA;
-
-int32_t DHT11_Start();
+//extern int32_t DHT11_STA;uin
 
 // uint8_t DHT11_Read_Byte();
 
 // [湿度整数，湿度小数，温度整数，温度小数，校验和]
-int32_t DHT11_Read(uint8_t *data);
+int32_t DHT11_read(uint8_t *data);
 
 #endif

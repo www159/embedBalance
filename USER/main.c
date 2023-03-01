@@ -24,7 +24,6 @@ int main()
     delay_ms(9000);
     LED1 = 1;
 
-    DHT_STA = DHT11_Start();
     printf("\r\nDHT11传感器的状态为:%d\r\n", DHT_STA);
     // KEY_Init();
 
@@ -32,7 +31,6 @@ int main()
         if(USART_RX_STA&(1<<15)) {
             len = USART_RX_STA&0X3FFF;
 						printf("\r\n您发送的消息为:\r\n");
-						printf("\r\n");
             for(t=0; t < len; t++) {
                 USART1->DR = USART_RX_BUF[t];
                 while((USART1->SR&(1<<6)) == 0);
@@ -42,13 +40,8 @@ int main()
         }
         else {
             times++;
-            if(times%5000 == 0) {
-                DHT_STA = DHT11_Start();
-                if(DHT_STA != 0) {
-                    printf("\r\nDHT11传感器的状态为:%d\r\n", DHT_STA);
-                    continue;
-                }
-                DHT_STA = DHT11_Read(data);
+            if(times%900 == 0) {
+                DHT_STA = DHT11_read(data);
                 if(DHT_STA == 0) {
                     printf("\r\n 温度:%d.%d  湿度:%d.%d", data[2], data[3], data[0], data[1]);
                     printf("\r\n实际和:%d   校验和:%d\r\n", (uint8_t)(data[0]+data[1]+data[2]+data[3]), data[4]);
