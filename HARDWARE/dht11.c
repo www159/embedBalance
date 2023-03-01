@@ -25,7 +25,7 @@ int32_t DHT11_read(uint8_t *buffer)
         buffer[i] = DHT11_read_byte();
     }
 
-    if(buffer[4] != buffer[0] + buffer[1] + buffer[2] + buffer[3]) return 0;
+    if(buffer[4] != buffer[0] + buffer[1] + buffer[2] + buffer[3]) return 1;
     return 0;
 }
 
@@ -107,6 +107,7 @@ static uint8_t DHT11_read_byte() {
     uint8_t i, t;
     
     for(i = 0; i < 8; i++) {
+        ret <<= 1;
         t = 0;
         while(DHT_PORT_IN == 0) {
             t++;
@@ -124,6 +125,6 @@ static uint8_t DHT11_read_byte() {
             ret &= ~0X01;
         }
         while(DHT_PORT_IN == 1);
-        ret <<= 1;
     }
+    return ret;
 }

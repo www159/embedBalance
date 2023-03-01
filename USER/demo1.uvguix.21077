@@ -3687,9 +3687,9 @@
       </Doc>
       <Doc>
         <Name>..\HARDWARE\dht11.c</Name>
-        <ColumnNumber>9</ColumnNumber>
-        <TopLine>71</TopLine>
-        <CurrentLine>92</CurrentLine>
+        <ColumnNumber>6</ColumnNumber>
+        <TopLine>67</TopLine>
+        <CurrentLine>107</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>

@@ -44,7 +44,6 @@ int main()
                 DHT_STA = DHT11_read(data);
                 if(DHT_STA == 0) {
                     printf("\r\n 温度:%d.%d  湿度:%d.%d", data[2], data[3], data[0], data[1]);
-                    printf("\r\n实际和:%d   校验和:%d\r\n", (uint8_t)(data[0]+data[1]+data[2]+data[3]), data[4]);
                 }
             }
             if(times%90 == 0) {
