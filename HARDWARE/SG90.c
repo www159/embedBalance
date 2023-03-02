@@ -29,13 +29,14 @@ void SG90_init()
 
 int32_t SG90_rotate(uint8_t linear)
 {
-    if(linear < 25 || linear > 125) {
+    if(linear > 180) {
         return 1;
     }
-    SG90_PWM_TIM->SG90_PWM_TIM_CCR = linear;
+    SG90_PWM_TIM->SG90_PWM_TIM_CCR = linear + 45;
     return 0;
 }
 
 int32_t SG90_reset() {
-    return SG90_rotate(0);
+    SG90_PWM_TIM->SG90_PWM_TIM_CCR = 45;
+    return 0;
 }

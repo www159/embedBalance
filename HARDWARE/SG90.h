@@ -20,9 +20,10 @@
 /**
  * PWM频率
  * F = 72M / (ARR + 1) / (PSC + 1) = 50 Hz
+ * 其中50 Hz为SG90的pwm工作频率
 */
-#define SG90_PWM_TIM_ARR    1000
-#define SG90_PWM_TIM_PSC    1438
+#define SG90_PWM_TIM_ARR    1800
+#define SG90_PWM_TIM_PSC    799
 
 // PWM计算定义
 /**
@@ -45,11 +46,17 @@
 void SG90_init();
 /**
  * @brief 旋转舵机
- * @param linear 取值 [25-125] 对应degree [0-180]
+ * @param linear 取值 [0-180] 对应degree [0-180]，精度为1
  * @return
  *  0 - 设置成功
  *  1 - 设置错误
 */
 int32_t SG90_rotate(uint8_t linear);
+
+/**
+ * @brief 舵机复位，即旋转到0°
+ * @return
+ * 0
+*/
 int32_t SG90_reset();
 #endif

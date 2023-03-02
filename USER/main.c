@@ -21,6 +21,7 @@ int main()
     LED_Init();
     SG90_init();
 	
+    // stm32启动指示灯
 	LED1 = 0;
     delay_ms(9000);
     LED1 = 1;
@@ -45,13 +46,9 @@ int main()
                 if(DHT_STA == 0) {
                     printf("\r\n 温度:%d.%d  湿度:%d.%d", data[2], data[3], data[0], data[1]);
                 }
-                // SG90_reset();
-                // printf("\r\nSG90复位\r\n");
-                // delay_ms(600);
-                // SG90_rotate(1);
-                SG90_rotate(2); 
-                delay_ms(600);
-                SG90_rotate(1);
+                SG90_rotate(90); 
+                delay_ms(300);
+                SG90_rotate(0);
             }
             if(times%90 == 0) {
                 LED0 = !LED0;
