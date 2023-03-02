@@ -3,7 +3,7 @@
 #include "delay.h"
 #include "led.h"
 #include "key.h"
-#include "dht11.h"
+#include "DHT11.h"
 #include "SG90.h"
 int main()
 {
@@ -42,13 +42,14 @@ int main()
         else {
             times++;
             if(times%900 == 0) {
+                // Dht相关
                 DHT_STA = DHT11_read(data);
                 if(DHT_STA == 0) {
                     printf("\r\n 温度:%d.%d  湿度:%d.%d", data[2], data[3], data[0], data[1]);
                 }
-                SG90_rotate(90); 
-                delay_ms(300);
-                SG90_rotate(0);
+                // SG90_rotate(90); 
+                // delay_ms(300);
+                // SG90_rotate(0);
             }
             if(times%90 == 0) {
                 LED0 = !LED0;
