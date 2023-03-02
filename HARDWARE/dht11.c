@@ -17,8 +17,8 @@ int32_t DHT11_read(uint8_t *buffer)
 
 
     if(DHT11_start() != 0) {
-        printf("\r\nDHT11启动失败\r\n");
-        return 1;
+        // printf("\r\nDHT11启动失败\r\n");
+        return 2;
     }
 
     for(i = 0; i < 5; i++) {
@@ -58,7 +58,7 @@ static uint8_t DHT11_start()
     uint32_t t;
 
 		// @debug
-	printf("\r\n初始化DHT11模块\r\n");
+	// printf("\r\n初始化DHT11模块\r\n");
     RCC->DHT_PORT_APBENR |= 1 << DHT_PORT_APBENR_OFST;
     
     // 设置IO输出

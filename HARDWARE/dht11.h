@@ -13,7 +13,13 @@
 #define DHT_PORT_CNFMODE_OUT    0X00030000
 #define DHT_PORT_ODR    1<<4    //上拉输入
 
-// [湿度整数，湿度小数，温度整数，温度小数，校验和]
+/**
+ * @brief   读取dht11温度，湿度
+ * @param data  数据缓冲区 格式为：[湿度整数，湿度小数，温度整数，温度小数，校验和]
+ * @return  0   成功
+ *      1   校验失败
+ *      2   启动失败
+*/
 int32_t DHT11_read(uint8_t *data);
 
 #endif

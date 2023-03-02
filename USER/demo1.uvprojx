@@ -439,6 +439,11 @@
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\dht11.c</FilePath>
             </File>
+            <File>
+              <FileName>SG90.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\SG90.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

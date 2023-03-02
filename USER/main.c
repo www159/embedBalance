@@ -4,7 +4,7 @@
 #include "led.h"
 #include "key.h"
 #include "dht11.h"
-
+#include "SG90.h"
 int main()
 {
     uint8_t t;
@@ -19,12 +19,12 @@ int main()
     delay_init(72);
     uart_init(72, 9600);
     LED_Init();
+    SG90_init();
 	
 	LED1 = 0;
     delay_ms(9000);
     LED1 = 1;
 
-    printf("\r\nDHT11传感器的状态为:%d\r\n", DHT_STA);
     // KEY_Init();
 
     while(1) {
@@ -45,6 +45,13 @@ int main()
                 if(DHT_STA == 0) {
                     printf("\r\n 温度:%d.%d  湿度:%d.%d", data[2], data[3], data[0], data[1]);
                 }
+                // SG90_reset();
+                // printf("\r\nSG90复位\r\n");
+                // delay_ms(600);
+                // SG90_rotate(1);
+                SG90_rotate(2); 
+                delay_ms(600);
+                SG90_rotate(1);
             }
             if(times%90 == 0) {
                 LED0 = !LED0;
